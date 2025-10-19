@@ -1,0 +1,75 @@
+﻿@using ECinema.ViewModels
+
+@model MovieVM
+
+<div class="container">
+    <div class="row mb-3 align-items-center my-3">
+        <div class="col-md-6">
+            <h2 class="display-6">Create new Movie</h2>
+        </div>
+    </div>
+
+    <div class="row my-3">
+        <div class="col-12">
+            <form method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input class="form-control" name="Name">
+                </div>
+                <div class="mb-3">
+                    <label for="img" class="form-label">Main Img</label>
+                    <input class="form-control" type="file" name="img">
+                </div>
+                <div class="mb-3">
+                    <label for="img" class="form-label">Sub Images</label>
+                    <input class="form-control" type="file" name="subImgs" multiple>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a description here" style="height: 100px" name="Description"></textarea>
+                        <label for="description">You Description Here...</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="Price" class="form-label">Price</label>
+                    <input class="form-control" name="Price">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="Actor" class="form-label">Actor</label>
+                    <input class="form-control" name="Actor">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="CategoryId" class="form-label">Category</label>
+                    @* <input class="form-control" name="CategoryId"> *@
+                    <select name="CategoryId" class="form-select">
+                        @foreach (var item in Model.Categories)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="CinemaId" class="form-label">Cinema</label>
+                    @* <input class="form-control" name="BrandId"> *@
+                    <select name="CinemaId" class="form-select">
+                        @foreach (var item in Model.Cinemas)
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="status" class="form-label">Status</label>
+                    <select name="Status" class="form-select">
+                        <option value="true" selected>Active</option>
+                        <option value="false">InActive</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
