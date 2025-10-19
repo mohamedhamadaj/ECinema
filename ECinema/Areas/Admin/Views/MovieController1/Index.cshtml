@@ -115,9 +115,12 @@
                         <th scope="col">Category Name</th>
                         <th scope="col">Cinema Name</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Actor</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Description</th>
                         <th scope="col">Actions</th>
+                        
+                        
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -128,6 +131,7 @@
                             <td>@item.Name</td>
                             <td>@item.Category.Name</td>
                             <td>@item.Cinema.Name</td>
+                            
                             <td>@item.Price.ToString("c")</td>
                             
                             @if (item.Status)
@@ -138,10 +142,13 @@
                             {
                                 <td><span class="badge text-bg-danger">InActive</span></td>
                             }
+                            <td>@item.Description</td>
                             <td>
-                                <a href="/Admin/Movie/Edit/@item.Id" type="button" class="btn btn-warning">Edit</a>
-                                <a href="/Admin/Movie/Delete/@item.Id" class="btn btn-danger btn-delete">Delete</a>
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
                             </td>
+                            
+                            
                         </tr>
                     }
                 </tbody>
